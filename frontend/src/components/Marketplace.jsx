@@ -44,10 +44,10 @@ function FraudResult({ result }) {
       <div className="mb-2">
         <div className="flex justify-between text-xs text-slate-500 mb-1">
           <span>Risk Score</span>
-          <span>{Math.round(score * 100)}%</span>
+          <span>{Math.round(score > 1 ? score : score * 100)}%</span>
         </div>
         <div className="w-full bg-slate-200 rounded-full h-2">
-          <div className={`h-2 rounded-full ${barClass} transition-all`} style={{ width: `${Math.round(score * 100)}%` }} />
+          <div className={`h-2 rounded-full ${barClass} transition-all`} style={{ width: `${Math.min(100, Math.round(score > 1 ? score : score * 100))}%` }} />
         </div>
       </div>
       <p className="text-slate-600 mb-2">{explanation}</p>

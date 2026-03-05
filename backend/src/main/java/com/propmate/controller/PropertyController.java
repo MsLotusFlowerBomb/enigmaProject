@@ -52,7 +52,7 @@ public class PropertyController {
         return dto;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<PropertyDTO>> getAvailableProperties() {
         List<PropertyDTO> properties = propertyRepository.findByAvailableTrue()
                 .stream().map(this::toDTO).collect(Collectors.toList());
@@ -73,7 +73,7 @@ public class PropertyController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<PropertyDTO> createProperty(@RequestBody CreatePropertyRequest request) {
         Property property = new Property();
         property.setTitle(request.getTitle());

@@ -191,8 +191,8 @@ export default function Maintenance() {
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs text-slate-500 mb-2">
                       <span className="bg-slate-100 px-2 py-0.5 rounded-full">{ticket.category}</span>
-                      <span>Property #{ticket.propertyId}</span>
-                      <span>Tenant #{ticket.tenantId}</span>
+                      <span>Property #{ticket.propertyId || ticket.property?.id} {ticket.property?.title ? `— ${ticket.property.title}` : ''}</span>
+                      <span>Tenant #{ticket.tenantId || ticket.tenant?.id} {ticket.tenant?.name ? `— ${ticket.tenant.name}` : ''}</span>
                       <span>{new Date(ticket.createdAt || Date.now()).toLocaleDateString('en-ZA')}</span>
                     </div>
                     {ticket.description && (

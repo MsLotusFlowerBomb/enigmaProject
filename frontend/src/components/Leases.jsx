@@ -62,7 +62,7 @@ export default function Leases() {
         endDate: form.endDate,
         monthlyRent: Number(form.monthlyRent),
       });
-      setGeneratedLease(result?.leaseText || result?.content || result?.lease || JSON.stringify(result, null, 2));
+      setGeneratedLease(result?.leaseContent || result?.leaseText || result?.content || result?.lease || JSON.stringify(result, null, 2));
     } catch {
       setGeneratedLease(generateSampleLease(form));
     } finally {
@@ -107,8 +107,8 @@ export default function Leases() {
                     <FileText className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-800 text-sm">{lease.tenantName || `Tenant #${lease.tenantId}`}</p>
-                    <p className="text-slate-500 text-xs">{lease.propertyTitle || `Property #${lease.propertyId}`}</p>
+                    <p className="font-semibold text-slate-800 text-sm">{lease.tenantName || lease.tenant?.name || `Tenant #${lease.tenantId || lease.tenant?.id}`}</p>
+                    <p className="text-slate-500 text-xs">{lease.propertyTitle || lease.property?.title || `Property #${lease.propertyId || lease.property?.id}`}</p>
                   </div>
                 </div>
                 <div className="text-right hidden sm:block">

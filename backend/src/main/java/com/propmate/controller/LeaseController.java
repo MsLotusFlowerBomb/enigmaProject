@@ -33,7 +33,7 @@ public class LeaseController {
     @Autowired
     private HuaweiCloudService huaweiCloudService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Lease>> getAllLeases() {
         return ResponseEntity.ok(leaseRepository.findAll());
     }

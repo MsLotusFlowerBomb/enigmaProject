@@ -26,7 +26,7 @@ public class MaintenanceController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<MaintenanceTicket>> getAllTickets() {
         return ResponseEntity.ok(maintenanceTicketRepository.findAll());
     }
@@ -38,7 +38,7 @@ public class MaintenanceController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<MaintenanceTicket> createTicket(@RequestBody CreateMaintenanceTicketRequest request) {
         MaintenanceTicket ticket = new MaintenanceTicket();
         ticket.setTitle(request.getTitle());

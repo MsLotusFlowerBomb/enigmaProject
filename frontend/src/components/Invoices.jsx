@@ -129,8 +129,8 @@ export default function Invoices() {
                         {inv.invoiceNumber || `INV-${inv.id}`}
                       </td>
                       <td className="px-6 py-4">
-                        <p className="text-sm font-medium text-slate-800">{inv.propertyTitle || `Property #${inv.propertyId}`}</p>
-                        <p className="text-xs text-slate-400">Lease #{inv.leaseId}</p>
+                        <p className="text-sm font-medium text-slate-800">{inv.propertyTitle || inv.lease?.property?.title || `Property #${inv.propertyId}`}</p>
+                        <p className="text-xs text-slate-400">Lease #{inv.leaseId || inv.lease?.id}</p>
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-600">{inv.dueDate}</td>
                       <td className="px-6 py-4 text-sm font-bold text-slate-800">{formatZAR(inv.amount || 0)}</td>

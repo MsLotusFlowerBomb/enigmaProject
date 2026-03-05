@@ -20,7 +20,7 @@ public class InvoiceController {
     @Autowired
     private LeaseRepository leaseRepository;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Invoice>> getAllInvoices() {
         return ResponseEntity.ok(invoiceRepository.findAll());
     }
